@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    font-family:monospace;
+}
+.heading{
+      background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://i.pinimg.com/736x/ee/51/5a/ee515a8aafcd1728734c7fbb5004871f.jpg);
+      padding: 14%;
+      text-align: center;
+      background-size: cover;
+}
+
+h1{
+    text-align: center;
+    margin-top: 0;
+    font-size: 120px;
+  
+}
+
+.veg-img,.fruit-img{
+    display: block;
+    padding-top: 6%;
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 70px;
+    cursor: pointer;
+
+}
+
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  transform: scale(1.1);
+  color: darkblue;
+}
+
+
+footer{
+    background-color: #333;
+    color: green;
+    text-align: center;
+}
