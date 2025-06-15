@@ -2,48 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greens Kiosk</title>
-  <link rel="stylesheet" href = "style.css">
+    <title>Greens Kiosk</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <nav id="navbar">
+        <span id="nav-title">Greens Kiosk</span>
+        <input type="text" id="search-bar" placeholder="Search for fruits or vegetables...">
+        <div class="cart-container">
+             <span id="cart-icon">🛒</span>
+            <span id="cart-count">0</span>
+        </div>
 
+        <div id="cart-details" class="hidden">
+            <h4>Cart Items</h4>
+            <ul id="cart-items"></ul>
+        </div>
 
-<div class="heading">
-<h1 id="title">Welcome to Greens Kiosk</h1>
-<p id="text">We sell fruits and vegetables</p>
-</div>
+    </nav>
 
-<div class="fruits">
-<h3>fruits</h3>
-<ul id="fruitsList">
-<li>Mangoes</li>
-<li>Bananas</li>
-<li>Water Melons</li>
-</ul>
-</div>
+    <div class="home">
+            <h1 id="title">Welcome to Greens Kiosk</h1>
+            <p id="text">We sell fruits and vegetables</p>
+        <div class="fruits">
+            <h3 class="section-title">Fruits</h3>
+            <ul id="fruList">
+                <li>Mangoes</li>
+                <li>Bananas</li>
+                <li>Water Melons</li>
+            </ul>
+        </div>
 
-<div class="vegetables">
-<h3>Vegetables</h3>
-<ul id="veggiesList">
-<li>Onions</li>
-<li>Tomatoes</li>
-<li>Kales</li>
-  
-</ul>
-</div>
-<button id="click-button">Add to Cart</button>
+        <div class="vegetables">
+            <h3 class="section-title">Vegetables</h3>
+            <ul id="vegList">
+                <li>Onions</li>
+                <li>Tomatoes</li>
+                <li>Kales</li>
+            </ul>
+        </div>
+    </div>
 
+    <footer>
+        <p>&copy; 2025 Greens Kiosk. All rights reserved.</p>
+    </footer>
 
-<script src="index.js"></script>
-
+    <script src="index.js"></script>
 </body>
-
-<footer>
-   <hr>
-        <p>© 2025 Greens Kiosk | All rights reserved</p>
-  <hr>
-</footer>
-
 </html>

@@ -1,102 +1,104 @@
 
-document.body.style.backgroundColor= 'silver';
+const fruitData = [
+    { name: "Mangoes", img: "images/mangoes.jpg" },
+    { name: "Bananas", img: "images/bananas.jpeg" },
+    { name: "Water Melons", img: "images/watermelons.jpg" },
+    { name: "Apples", img: "images/apples.jpg" }
+];
+
+const vegData = [
+    { name: "Onions", img: "images/onions.jpg" },
+    { name: "Tomatoes", img: "images/tomatoes.webp" },
+    { name: "Kales", img: "images/kales.jpeg" },
+    { name: "Carrots", img: "images/carrots.jpg" }
+];
 
 const title = document.getElementById('title');
 title.style.color='green'
-title.style.fontSize='150px';
-title.style.fontFamily=''
+title.style.fontSize='70px'
+title.style.textAlign='center';
 
 const fontCase = document.querySelectorAll('h3');
 fontCase.forEach(h3=>{
   h3.style.textTransform = 'uppercase';
-  h3.style.fontSize='60px';
+  h3.style.fontSize='30px';
   h3.style.marginLeft='43%';
 });
 
-const fruits = document.getElementById('fruitsList');
-const newfruit = document.createElement('li');
-fruits.appendChild(newfruit);
-newfruit.textContent= 'Apples';
 
 
 
+function renderList(dataArray, listId) {
+    const ul = document.getElementById(listId);
+    ul.innerHTML = "";
 
-const vegetables = document.getElementById('veggiesList');
-const newveg = document.createElement('li');
-vegetables.appendChild(newveg);
-newveg.textContent = 'Carrots';
+    dataArray.forEach(item => {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        img.src = item.img;
+        img.className = "item-img";
 
-fruits.style.justifyContent="space-between"
-fruits.style.display="flex";
+        const nameSpan = document.createElement('span');
+        nameSpan.className = "item-name";
+        nameSpan.textContent = item.name;
 
+        const btn = document.createElement('button');
+        btn.className = "add-to-cart";
+        btn.textContent = "Add to Cart";
+        btn.onclick = function() {
+            cartCount++;
+            cartItems.push(item.name);
+            updateCart();
+        };
 
-const paragraph = document.querySelector("p")
-paragraph.style.fontSize="60px"
+        li.appendChild(img);
+        li.appendChild(nameSpan);
+        li.appendChild(btn);
+        ul.appendChild(li);
+    });
+}
 
-const fruit = document.querySelectorAll('#fruitsList li');
-const fruitimages = ["images/mangoes.jpg",
-                     "images/bananas.jpeg",
-                     "images/watermelons.jpg",
-                     "images/apples.jpg"]
-fruit.forEach((li,index)=>{
-  const imgfruit = document.createElement("img")
-  imgfruit.src = fruitimages[index];
-  imgfruit.className = "fruit-img";
-  li.appendChild(imgfruit)
-})
+let h3s = document.getElementsByClassName("section-title");
+for (let i = 0; i < h3s.length; i++) {
+    h3s[i].style.textTransform = "uppercase";
+    h3s[i].style.marginLeft= "30%";
+}
 
+renderList(fruitData, "fruList");
+renderList(vegData, "vegList");
 
-const veg = document.querySelectorAll('#veggiesList li');
-const vegimages = ["images/onions.jpg",
-                   "images/tomatoes.webp",
-                   "images/kales.jpeg",
-                   "images/carrots.jpg"]
-veg.forEach((li,index)=>{
-  const imgveg = document.createElement("img")
-  imgveg.src = vegimages[index];
-  imgveg.className = "veg-img";
-  li.appendChild(imgveg)
-})
+let = cartItems=[]
+let cartCount = 0;
+function updateCart() {
+    document.getElementById("cart-count").textContent = cartCount;
+    const cartList = document.getElementById("cart-items");
+    cartList.innerHTML = "";
+    cartItems.forEach(name => {
+        const li = document.createElement("li");
+        li.textContent = name;
+        cartList.appendChild(li);
+    });
+}
 
-
-vegetables.style.display="flex"
-vegetables.style.justifyContent="space-between"
-vegetables.style.marginTop ="100px"
-vegetables.style.marginBottom='100px'
-
-
-
-const fruitsList=document.getElementById("fruitsList");
-fruitsList.style.fontSize='40px';
-
-
-const veggiesList=document.getElementById("veggiesList");
-veggiesList.style.fontSize='40px';
-
-
-
-
-const button=document.getElementById('click-button')
-button.style.background='white'
-button.style.border = 'none'
-button.style.backgroundColor = 'coral'
-button.style.borderRadius = '20px'
-button.style.color = 'white'
-button.style.fontSize = "30px"
-button.style.cursor = 'pointer'
-button.style.marginTop = "40px"
-button.style.width = '250px'
-button.style.height = '90px'
-button.style.marginBottom = "5%"
-button.style.marginLeft='40%'
-button.addEventListener('click',()=>{
-    button.style.backgroundColor='brown'
-    button.textContent='Successful'})
-    button.onclick=()=>{           
-    
-    }
+document.getElementById("cart-icon").addEventListener("click", function() {
+    const details = document.getElementById("cart-details");
+    details.classList.toggle("hidden");
+});
 
 
+document.getElementById("search-bar").addEventListener("input", function() {
+    let search = this.value.toLowerCase();
+    const filteredFruits = fruitData.filter(item => item.name.toLowerCase().includes(search));
+    renderList(filteredFruits, "fruList");
 
+    const filteredVeg = vegData.filter(item => item.name.toLowerCase().includes(search));
+    renderList(filteredVeg, "vegList");
 
+    let fruitBtns = document.getElementById("fruList").getElementsByClassName("add-to-cart");
+    for (let btn of fruitBtns) btn.onclick = function() { cartCount++; updateCart(); };
+    let vegBtns = document.getElementById("vegList").getElementsByClassName("add-to-cart");
+    for (let btn of vegBtns) btn.onclick = function() { cartCount++; updateCart(); };
+});
 
+document.body.style.backgroundColor = "silver";
+document.getElementById("nav-title").style.color = "green";
