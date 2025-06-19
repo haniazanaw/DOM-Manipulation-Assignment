@@ -1,52 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Greens Kiosk</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Greens Kiosk</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav id="navbar">
-        <span id="nav-title">Greens Kiosk</span>
-        <input type="text" id="search-bar" placeholder="Search for fruits or vegetables...">
-        <div class="cart-container">
-             <span id="cart-icon">🛒</span>
-            <span id="cart-count">0</span>
-        </div>
-
-        <div id="cart-details" class="hidden">
-            <h4>Cart Items</h4>
-            <ul id="cart-items"></ul>
-        </div>
-
-    </nav>
-
-    <div class="home">
-            <h1 id="title">Welcome to Greens Kiosk</h1>
-            <p id="text">We sell fruits and vegetables</p>
-        <div class="fruits">
-            <h3 class="section-title">Fruits</h3>
-            <ul id="fruList">
-                <li>Mangoes</li>
-                <li>Bananas</li>
-                <li>Water Melons</li>
-            </ul>
-        </div>
-
-        <div class="vegetables">
-            <h3 class="section-title">Vegetables</h3>
-            <ul id="vegList">
-                <li>Onions</li>
-                <li>Tomatoes</li>
-                <li>Kales</li>
-            </ul>
-        </div>
+  <div class="navbar">
+    <h1 id="title">Greens Kiosk</h1>
+    <div class="nav-actions">
+      <button id="theme-toggle" title="Toggle Light/Dark Mode">🌙</button>
+      <div class="cart" id="cart-container">
+        🛒 <span id="cart-count">0</span>
+        <div id="cart-dropdown" class="cart-dropdown hidden"></div>
+      </div>
     </div>
-
-    <footer>
-        <p>&copy; 2025 Greens Kiosk. All rights reserved.</p>
-    </footer>
-
-    <script src="index.js"></script>
+  </div>
+  <h1 class="welcome">Welcome to Greens Kiosk</h1>
+  <p class="subtitle">We sell fresh fruits and vegetables.</p>
+  <input type="text" id="searchBox" placeholder="Search fruits or vegetables...">
+  <div class="lists-container">
+    <section>
+      <h3>Fruits</h3>
+      <ul id="fruList" class="item-list"></ul>
+    </section>
+    <section>
+      <h3>Vegetables</h3>
+      <ul id="vegList" class="item-list"></ul>
+    </section>
+  </div>
+  <script src="index.js"></script>
 </body>
 </html>
